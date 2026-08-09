@@ -39,4 +39,13 @@
     <string name="settings">Pengaturan</string>
     <string name="disable_global_rules">Nonaktifkan aturan global</string>
     <string name="disable_all_rules">Nonaktifkan semua aturan</string>
+    
+    <!-- App List -->
+    <string name="search_apps">Cari aplikasi</string>
+    <string name="show_system_apps">Tampilkan aplikasi sistem</string>
+    
+    <!-- Package Item -->
+    <string name="applic_name">Nama aplikasi</string>
+    <string name="package_name">Nama paket</string>
+    <string name="rules_enabled">Aturan: %d diaktifkan</string>
 </resources>

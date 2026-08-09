@@ -39,4 +39,13 @@
     <string name="settings">الإعدادات</string>
     <string name="disable_global_rules">تعطيل القواعد العامة</string>
     <string name="disable_all_rules">تعطيل جميع القواعد</string>
+    
+    <!-- App List -->
+    <string name="search_apps">البحث في التطبيقات</string>
+    <string name="show_system_apps">إظهار تطبيقات النظام</string>
+    
+    <!-- Package Item -->
+    <string name="applic_name">اسم التطبيق</string>
+    <string name="package_name">اسم الحزمة</string>
+    <string name="rules_enabled">القواعد: %d مفعّلة</string>
 </resources>

@@ -35,4 +35,13 @@
     <string name="settings">Настройки</string>
     <string name="disable_global_rules">Отключить глобальные правила</string>
     <string name="disable_all_rules">Отключить все правила</string>
+    
+    <!-- App List -->
+    <string name="search_apps">Поиск приложений</string>
+    <string name="show_system_apps">Показать системные приложения</string>
+    
+    <!-- Package Item -->
+    <string name="applic_name">Имя приложения</string>
+    <string name="package_name">Имя пакета</string>
+    <string name="rules_enabled">Правила: %d включено</string>
 </resources>

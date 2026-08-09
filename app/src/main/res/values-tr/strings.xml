@@ -39,4 +39,13 @@
     <string name="settings">Ayarlar</string>
     <string name="disable_global_rules">Küresel kuralları devre dışı bırak</string>
     <string name="disable_all_rules">Tüm kuralları devre dışı bırak</string>
+    
+    <!-- App List -->
+    <string name="search_apps">Uygulama ara</string>
+    <string name="show_system_apps">Sistem uygulamalarını göster</string>
+    
+    <!-- Package Item -->
+    <string name="applic_name">Uygulama adı</string>
+    <string name="package_name">Paket adı</string>
+    <string name="rules_enabled">Kurallar: %d etkin</string>
 </resources>

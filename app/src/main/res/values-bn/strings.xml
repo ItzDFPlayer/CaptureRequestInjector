@@ -39,4 +39,13 @@
     <string name="settings">সেটিংস</string>
     <string name="disable_global_rules">গ্লোবাল নিয়ম নিষ্ক্রিয় করুন</string>
     <string name="disable_all_rules">সমস্ত নিয়ম নিষ্ক্রিয় করুন</string>
+    
+    <!-- App List -->
+    <string name="search_apps">অ্যাপ অনুসন্ধান করুন</string>
+    <string name="show_system_apps">সিস্টেম অ্যাপ দেখান</string>
+    
+    <!-- Package Item -->
+    <string name="applic_name">অ্যাপের নাম</string>
+    <string name="package_name">প্যাকেজের নাম</string>
+    <string name="rules_enabled">নিয়ম: %d সক্রিয়</string>
 </resources>

@@ -35,4 +35,13 @@
     <string name="settings">Налаштування</string>
     <string name="disable_global_rules">Вимкнути глобальні правила</string>
     <string name="disable_all_rules">Вимкнути всі правила</string>
+    
+    <!-- App List -->
+    <string name="search_apps">Пошук додатків</string>
+    <string name="show_system_apps">Показати системні додатки</string>
+    
+    <!-- Package Item -->
+    <string name="applic_name">Назва додатка</string>
+    <string name="package_name">Назва пакета</string>
+    <string name="rules_enabled">Правила: %d увімкнено</string>
 </resources>

@@ -39,4 +39,13 @@
     <string name="settings">تنظیمات</string>
     <string name="disable_global_rules">غیرفعال کردن قوانین سراسری</string>
     <string name="disable_all_rules">غیرفعال کردن تمام قوانین</string>
+    
+    <!-- App List -->
+    <string name="search_apps">جستجوی برنامه‌ها</string>
+    <string name="show_system_apps">نمایش برنامه‌های سیستم</string>
+    
+    <!-- Package Item -->
+    <string name="applic_name">نام برنامه</string>
+    <string name="package_name">نام بسته</string>
+    <string name="rules_enabled">قوانین: %d فعال</string>
 </resources>

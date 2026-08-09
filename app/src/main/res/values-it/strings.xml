@@ -39,4 +39,13 @@
     <string name="settings">Impostazioni</string>
     <string name="disable_global_rules">Disabilita regole globali</string>
     <string name="disable_all_rules">Disabilita tutte le regole</string>
+    
+    <!-- App List -->
+    <string name="search_apps">Cerca app</string>
+    <string name="show_system_apps">Mostra app di sistema</string>
+    
+    <!-- Package Item -->
+    <string name="applic_name">Nome app</string>
+    <string name="package_name">Nome pacchetto</string>
+    <string name="rules_enabled">Regole: %d attivate</string>
 </resources>
