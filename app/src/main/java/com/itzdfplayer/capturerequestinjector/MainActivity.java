@@ -228,25 +228,7 @@ public class MainActivity extends AppCompatActivity {
         List<ApplicationInfo> apps = pm.getInstalledApplications(PackageManager.GET_META_DATA);
         adapter.setApps(apps, showSystemApps);
     }
-
-    private void scanCameraApps() {
-        PackageManager pm = getPackageManager();
-        List<PackageInfo> packages = pm.getInstalledPackages(PackageManager.GET_PERMISSIONS);
-        for (PackageInfo info : packages) {
-            if (info.requestedPermissions != null) {
-                for (String perm : info.requestedPermissions) {
-                    if (perm.equals(android.Manifest.permission.CAMERA)) {
-                        if (!packageList.contains(info.packageName)) {
-                            RuleStore.saveRules(this, info.packageName, new ArrayList<>());
-                        }
-                        break;
-                    }
-                }
-            }
-        }
-        loadPackageList();
-    }
-
+    
     private void showSettingsDialog() {
         View dialogView = getLayoutInflater().inflate(R.layout.dialog_settings, null);
         
