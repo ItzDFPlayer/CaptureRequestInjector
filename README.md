@@ -1,27 +1,83 @@
-# Xposed Module Template (Based on libxposed)
+# Capture Request Injector
 
-This is a general-purpose Xposed module template built on [libxposed](https://github.com/libxposed/api).
+An Xposed/LSPosed module that allows you to override camera capture request parameters on Android devices. This module hooks into the Camera2 API and lets you modify capture settings like exposure time, ISO, noise reduction mode, and more for individual camera apps.
+
+## Features
+
+- **Global Rules**: Apply camera parameter overrides to all camera apps
+- **Per-App Rules**: Configure specific overrides for individual camera applications
+- **App Selection**: Browse and select apps with icons from an easy-to-use list
+- **Priority Apps**: Camera apps from scope.list are shown at the top for quick access
+- **Quick Settings**: Toggle global rules or disable all rules from Quick Settings tiles
+- **Search & Filter**: Search apps and toggle system app visibility
+- **Multiple Languages**: Supports 12+ languages including English, Arabic, Bengali, Spanish, Persian, French, Indonesian, Italian, Polish, Portuguese, Russian, Turkish, Ukrainian, and Chinese
 
 ## How to Use
 
-1. **Modify Package Name**: Change `namespace` and `applicationId` in `app/build.gradle` to your own package name.
-2. **Rename Package Directory**: Rename the `app/src/main/java/com/example/module` directory to match your package structure.
-3. **Update Module Entry Point**: 
-   - Implement your logic in `MainModule.java`.
-   - Update the class name in `app/src/main/resources/META-INF/xposed/java_init.list` to ensure it points to your `XposedModule` implementation class.
-4. **Configure Scope**:
-   - List the package names of the apps you want to hook in `app/src/main/resources/META-INF/xposed/scope.list` (one per line).
-5. **Set Compilation Parameters**:
-   - Modify `compileSdk` and `targetSdkVersion` in `app/build.gradle` as needed.
+1. **Install the Module**
+   - Install the APK on your device
+   - Open LSPosed Manager
+   - Enable the module for your target camera apps
+   - Reboot your device
 
-## Key Components
+2. **Configure Rules**
+   - Open the Capture Request Injector app
+   - Tap "Global Rules" at the top to set default rules for all cameras
+   - Tap the "+" button to add a specific camera app
+   - Select the app from the list (camera apps are prioritized at the top)
+   - Tap on the app to configure its specific rules
+   - Add rules to override camera parameters
 
-- `MainModule.java`: The main entry point of the module, inheriting from `XposedModule`.
-- `java_init.list`: Tells libxposed which class is the entry point for the module.
-- `scope.list`: Defines the scope (apps) where the module will be active.
-- `module.prop`: Contains metadata information for the module.
+3. **Supported Parameters**
+   - Exposure time
+   - ISO sensitivity
+   - Noise reduction mode
+   - Edge enhancement mode
+   - Shading mode
+   - And many more Camera2 capture request keys
 
-## Notes
+4. **Quick Settings**
+   - Add the "Disable Global Rules" and "Disable All Rules" tiles to Quick Settings
+   - Quickly toggle rules without opening the app
 
-- This template uses the `libxposed` API. Please refer to its official documentation for more advanced usage.
-- Ensure that `compileOnly` dependencies are correctly configured during development to avoid bundling the Xposed API into your APK.
+## How It Works
+
+The module hooks into `CaptureRequest.Builder.build()` in target camera apps. When a capture request is built, the module applies configured rules to override specific parameters. Rules are stored in a JSON file in external storage and read by the hook in the target app's process.
+
+## Scope
+
+The module is configured to work with popular camera apps including:
+- Google Camera (GCam)
+- MGC (Modded Google Camera)
+- LineageOS Aperture
+- Samsung Camera
+- And many other camera-related apps
+
+See `app/src/main/resources/META-INF/xposed/scope.list` for the full list.
+
+## Building
+
+1. Clone the repository
+2. Open in Android Studio
+3. Build the APK
+4. Install on your device with LSPosed
+
+## Requirements
+
+- Android device with LSPosed or Xposed framework
+- Android 8.0+ (API level 26+)
+- Camera2 API support in target apps
+
+## Credits
+
+- Built with [libxposed](https://github.com/libxposed/api)
+- Uses Material Design components
+- Icon by [Material Icons](https://fonts.google.com/icons)
+
+## License
+
+See LICENSE file for details.
+
+## Contributing
+
+Contributions are welcome! Feel free to submit issues and pull requests.
