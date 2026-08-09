@@ -52,7 +52,7 @@ public class PackageAdapter extends RecyclerView.Adapter<PackageAdapter.ViewHold
         if (pkg.equals("global")) {
             appName = "Global Rules";
             try {
-                icon = context.getDrawable(R.drawable.settings);
+                icon = context.getDrawable(R.drawable.globe);
             } catch (Exception e) {
                 e.printStackTrace();
             }

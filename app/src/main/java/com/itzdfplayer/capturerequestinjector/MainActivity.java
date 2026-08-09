@@ -65,13 +65,6 @@ public class MainActivity extends AppCompatActivity {
         ExtendedFloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(v -> showAddPackageDialog());
 
-        ExtendedFloatingActionButton fabGlobal = findViewById(R.id.fabGlobal);
-        fabGlobal.setOnClickListener(v -> {
-            Intent intent = new Intent(this, RuleEditorActivity.class);
-            intent.putExtra("packageName", "global");
-            startActivity(intent);
-        });
-
         FloatingActionButton fabSettings = findViewById(R.id.fabSettings);
         fabSettings.setOnClickListener(v -> showSettingsDialog());
 
@@ -161,13 +154,19 @@ public class MainActivity extends AppCompatActivity {
     private void loadPackageList() {
         Map<String, ?> all = prefs.getAll();
         packageList.clear();
+        // Always add "global" at the top
+        packageList.add("global");
         for (String key : all.keySet()) {
-            // Skip "global" since it has its own dedicated button
             if (!key.equals("global")) {
                 packageList.add(key);
             }
         }
-        Collections.sort(packageList);
+        // Sort only non-global entries
+        List<String> nonGlobal = new ArrayList<>(packageList.subList(1, packageList.size()));
+        Collections.sort(nonGlobal);
+        packageList.clear();
+        packageList.add("global");
+        packageList.addAll(nonGlobal);
         adapter.notifyDataSetChanged();
     }
 
