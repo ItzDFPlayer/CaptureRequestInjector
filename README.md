@@ -6,19 +6,15 @@ An Xposed/LSPosed module that allows you to override camera capture request para
 
 - **Global Rules**: Apply camera parameter overrides to all camera apps
 - **Per-App Rules**: Configure specific overrides for individual camera applications
-- **App Selection**: Browse and select apps with icons from an easy-to-use list
 - **Priority Apps**: Camera apps from scope.list are shown at the top for quick access
 - **Quick Settings**: Toggle global rules or disable all rules from Quick Settings tiles
-- **Search & Filter**: Search apps and toggle system app visibility
-- **Multiple Languages**: Supports 12+ languages including English, Arabic, Bengali, Spanish, Persian, French, Indonesian, Italian, Polish, Portuguese, Russian, Turkish, Ukrainian, and Chinese
 
 ## How to Use
 
-1. **Install the Module**
+1. **Installation**
    - Install the APK on your device
    - Open LSPosed Manager
    - Enable the module for your target camera apps
-   - Reboot your device
 
 2. **Configure Rules**
    - Open the Capture Request Injector app
@@ -28,7 +24,7 @@ An Xposed/LSPosed module that allows you to override camera capture request para
    - Tap on the app to configure its specific rules
    - Add rules to override camera parameters
 
-3. **Supported Parameters**
+3. **Included Parameters**
    - Exposure time
    - ISO sensitivity
    - Noise reduction mode
@@ -65,7 +61,7 @@ See `app/src/main/resources/META-INF/xposed/scope.list` for the full list.
 ## Requirements
 
 - Android device with LSPosed or Xposed framework
-- Android 8.0+ (API level 26+)
+- Android 10.0+ (API level 29+)
 - Camera2 API support in target apps
 
 ## Credits
