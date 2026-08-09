@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppViewHolder> {
@@ -44,40 +46,26 @@ public class AppListAdapter extends RecyclerView.Adapter<AppListAdapter.AppViewH
 
     private void loadPriorityPackages() {
         // Hardcode priority packages from scope.list
-        priorityPackages.add("com.android.MGC_9_6_080");
-        priorityPackages.add("com.google.android.GoogleCameraEng");
-        priorityPackages.add("com.android.camera");
-        priorityPackages.add("org.lineageos.aperture");
-        priorityPackages.add("com.meitu.meiyancamera");
-        priorityPackages.add("com.samsung.android.scan3d");
-        priorityPackages.add("com.android.MGC_9_7_047");
-        priorityPackages.add("com.agc.gcamcom.qualcomm.qti.chromatixmobile");
-        priorityPackages.add("com.ss.android.ugc.aweme");
-        priorityPackages.add("com.motioncam");
-        priorityPackages.add("com.riseupgames.proshot2");
-        priorityPackages.add("com.niksoftware.snapseed");
-        priorityPackages.add("com.vwfndr.mbl");
-        priorityPackages.add("org.codeaurora.snapcam");
-        priorityPackages.add("com.google.android.apps.googlecamera.fishfood");
-        priorityPackages.add("com.android.MGC_9_4_103");
-        priorityPackages.add("com.android.MGC_9_3_160");
-        priorityPackages.add("com.android.MGC_9_2_113");
-        priorityPackages.add("com.agc.gcam96");
-        priorityPackages.add("com.samsung.agc.gcam96");
-        priorityPackages.add("com.agc.gcam");
-        priorityPackages.add("com.agc.gcam92");
-        priorityPackages.add("com.agc.gcam88");
-        priorityPackages.add("com.agc.gcam87");
-        priorityPackages.add("com.agc.gcam85");
-        priorityPackages.add("com.agc.gcam84");
-        priorityPackages.add("org.codeaurora.qcamera3");
-        priorityPackages.add("com.sec.factory.cameralyzer");
-        priorityPackages.add("com.fintech.life");
-        priorityPackages.add("com.lmc.fan.edition");
-        priorityPackages.add("com.camera.LMC83_R3");
-        priorityPackages.add("com.samsung.android.ruler");
-        priorityPackages.add("com.motioncam");
-        priorityPackages.add("com.motioncam.pro");
+        Set<String> packages = new HashSet<>();
+
+        // Load the file relative to the APK root
+        InputStream is = Objects.requireNonNull(AppListAdapter.class.getClassLoader())
+                .getResourceAsStream("META-INF/xposed/scope.list");
+
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+                // Ignore empty lines and comments
+                if (!line.isEmpty() && !line.startsWith("#")) {
+                    packages.add(line);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        priorityPackages = packages;
         android.util.Log.d("AppListAdapter", "Loaded " + priorityPackages.size() + " priority packages");
     }
 
