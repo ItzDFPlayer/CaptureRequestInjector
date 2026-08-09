@@ -183,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
         MaterialSwitch showSystemApps = dialogView.findViewById(R.id.showSystemApps);
         RecyclerView appRecyclerView = dialogView.findViewById(R.id.appRecyclerView);
         
-        android.app.AlertDialog dialog = new MaterialAlertDialogBuilder(this)
+        AlertDialog dialog = new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.add_package)
                 .setView(dialogView)
                 .setNegativeButton(R.string.cancel, null)
