@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name" translatable="false">Capture Request Injector</string>
+    
+    <!-- MainActivity -->
+    <string name="add_package">Adicionar pacote</string>
+    <string name="package_hint">ex. com.google.android.GoogleCamera</string>
+    <string name="add">Adicionar</string>
+    <string name="cancel">Cancelar</string>
+    <string name="delete_package">Excluir pacote</string>
+    <string name="delete_package_message">Excluir %1$s e todas as suas regras?</string>
+    <string name="delete">Excluir</string>
+    <string name="cannot_delete_global">Não é possível excluir global</string>
+    <string name="cannot_delete_global_message">As regras globais não podem ser excluídas. Você pode desabilitar regras individuais.</string>
+    <string name="ok">OK</string>
+    <string name="global_rules">Regras globais</string>
+    <string name="edit_rules">Editar regras</string>
+    <string name="info">Informações</string>
+    <string name="app_info_title">Sobre o Capture Request Injector</string>
+    <string name="app_info_text">O Capture Request Injector é um módulo Xposed/LSPosed que permite substituir os parâmetros de solicitação de captura da câmera em dispositivos Android.\n\nComo usar:\n\n1. Ative o módulo no LSPosed para o aplicativo alvo\n2. Reinicie o dispositivo\n3. Adicione o nome do pacote para o aplicativo de câmera que deseja modificar\n4. Toque no pacote para editar suas regras\n5. Adicione regras para substituir parâmetros específicos da câmera\n\nAs regras globais se aplicam a todos os aplicativos de câmera, enquanto as regras específicas do pacote substituem as regras globais para esse aplicativo em particular.\n\nOs parâmetros suportados incluem tempo de exposição, ISO, modo de redução de ruído, modo de aprimoramento de borda, modo de sombreamento e muitas outras chaves de solicitação de captura Camera2.</string>
+    <string name="github" translatable="false">GitHub</string>
+    <string name="github_url" translatable="false">https://github.com/ItzDFPlayer/CaptureRequestInjector</string>
+    
+    <!-- RuleEditorActivity -->
+    <string name="rules">Regras</string>
+    <string name="add_rule">Adicionar regra</string>
+    <string name="edit_rule">Editar regra</string>
+    <string name="save">Salvar</string>
+    <string name="vendor_key">Chave do fornecedor</string>
+    <string name="tag_preset">Predefinição de tag</string>
+    <string name="select_tag">Selecionar tag</string>
+    <string name="key_name">Nome da chave</string>
+    <string name="type">Tipo</string>
+    <string name="select_type">Selecionar tipo</string>
+    <string name="value">Valor</string>
+    <string name="enabled">Ativado</string>
+    <string name="custom">PERSONALIZADO</string>
+    
+    <!-- Settings -->
+    <string name="settings">Configurações</string>
+    <string name="disable_global_rules">Desativar regras globais</string>
+    <string name="disable_all_rules">Desativar todas as regras</string>
+</resources>

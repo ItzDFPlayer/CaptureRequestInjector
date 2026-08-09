@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name" translatable="false">Capture Request Injector</string>
+
+    <!-- MainActivity -->
+    <string name="add_package">添加包</string>
+    <string name="package_hint">例如 com.google.android.GoogleCamera</string>
+    <string name="add">添加</string>
+    <string name="cancel">取消</string>
+    <string name="delete_package">删除包</string>
+    <string name="delete_package_message">删除 %1$s 及其所有规则？</string>
+    <string name="delete">删除</string>
+    <string name="cannot_delete_global">无法删除全局</string>
+    <string name="cannot_delete_global_message">全局规则无法删除。您可以单独禁用各个规则。</string>
+    <string name="ok">确定</string>
+    <string name="global_rules">全局规则</string>
+    <string name="edit_rules">编辑规则</string>
+    <string name="info">信息</string>
+    <string name="app_info_title">关于 Capture Request Injector</string>
+    <string name="app_info_text">Capture Request Injector 是一个 Xposed/LSPosed 模块，允许您在 Android 设备上覆盖相机捕获请求参数。\n\n使用方法：\n\n1. 在 LSPosed 中为目标应用启用模块\n2. 重启设备\n3. 添加要修改的相机应用的包名\n4. 点击包名以编辑其规则\n5. 添加规则以覆盖特定的相机参数\n\n全局规则适用于所有相机应用，而特定包的规则会覆盖该应用的全局规则。\n\n支持的参数包括曝光时间、ISO、降噪模式、边缘增强模式、阴影模式以及许多 Camera2 捕获请求键。</string>
+    <string name="github" translatable="false">GitHub</string>
+    <string name="github_url" translatable="false">https://github.com/ItzDFPlayer/CaptureRequestInjector</string>
+
+    <!-- RuleEditorActivity -->
+    <string name="rules">规则</string>
+    <string name="add_rule">添加规则</string>
+    <string name="edit_rule">编辑规则</string>
+    <string name="save">保存</string>
+    <string name="vendor_key">供应商键</string>
+    <string name="tag_preset">标签预设</string>
+    <string name="select_tag">选择标签</string>
+    <string name="key_name">键名称</string>
+    <string name="type">类型</string>
+    <string name="select_type">选择类型</string>
+    <string name="value">值</string>
+    <string name="enabled">已启用</string>
+    <string name="custom">自定义</string>
+    
+    <!-- Settings -->
+    <string name="settings">设置</string>
+    <string name="disable_global_rules">禁用全局规则</string>
+    <string name="disable_all_rules">禁用所有规则</string>
+</resources>

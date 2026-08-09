@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dynamic colors for Android 12+ (Material You) -->
+    <!-- These will be overridden by DynamicColors.applyToActivitiesIfAvailable -->
+    <color name="purple_200">?attr/colorPrimaryContainer</color>
+    <color name="purple_500">?attr/colorPrimary</color>
+    <color name="purple_700">?attr/colorOnPrimaryContainer</color>
+    <color name="teal_200">?attr/colorSecondaryContainer</color>
+    <color name="teal_700">?attr/colorSecondary</color>
+    <color name="black">?attr/colorOnBackground</color>
+    <color name="white">?attr/colorOnBackground</color>
+</resources>

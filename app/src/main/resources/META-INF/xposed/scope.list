@@ -1,0 +1,39 @@
+# Scope list, one package name per line
+# For system modules, you can use 'system'
+# system
+# For example:
+# com.android.systemui
+com.android.MGC_9_6_080
+com.google.android.GoogleCameraEng
+com.android.camera
+org.lineageos.aperture
+com.meitu.meiyancamera
+com.samsung.android.scan3d
+com.android.MGC_9_7_047
+com.agc.gcamcom.qualcomm.qti.chromatixmobile
+com.ss.android.ugc.aweme
+com.motioncam
+com.riseupgames.proshot2
+com.niksoftware.snapseed
+com.vwfndr.mbl
+org.codeaurora.snapcam
+com.google.android.apps.googlecamera.fishfood
+com.android.MGC_9_4_103
+com.android.MGC_9_3_160
+com.android.MGC_9_2_113
+com.agc.gcam96
+com.samsung.agc.gcam96
+com.agc.gcam
+com.agc.gcam92
+com.agc.gcam88
+com.agc.gcam87
+com.agc.gcam85
+com.agc.gcam84
+org.codeaurora.qcamera3
+com.sec.factory.cameralyzer
+com.fintech.life
+com.lmc.fan.edition
+com.camera.LMC83_R3
+com.samsung.android.ruler
+com.motioncam
+com.motioncam.pro

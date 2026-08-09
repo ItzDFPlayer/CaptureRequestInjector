@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name" translatable="false">Capture Request Injector</string>
+    
+    <!-- MainActivity -->
+    <string name="add_package">إضافة حزمة</string>
+    <string name="package_hint">على سبيل المثال com.google.android.GoogleCamera</string>
+    <string name="add">إضافة</string>
+    <string name="cancel">إلغاء</string>
+    <string name="delete_package">حذف الحزمة</string>
+    <string name="delete_package_message">حذف %1$s وجميع قواعده؟</string>
+    <string name="delete">حذف</string>
+    <string name="cannot_delete_global">لا يمكن حذف العامة</string>
+    <string name="cannot_delete_global_message">لا يمكن حذف القواعد العامة. يمكنك تعطيل القواعد الفردية بدلاً من ذلك.</string>
+    <string name="ok">موافق</string>
+    <string name="global_rules">القواعد العامة</string>
+    <string name="edit_rules">تحرير القواعد</string>
+    <string name="info">معلومات</string>
+    <string name="app_info_title">حول Capture Request Injector</string>
+    <string name="app_info_text">Capture Request Injector هو وحدة Xposed/LSPosed تتيح لك تجاوز معلمات طلب التقاط الكاميرا على أجهزة Android.\n\nكيفية الاستخدام:\n\n1. قم بتمكين الوحدة في LSPosed للتطبيق المستهدف\n2. أعد تشغيل جهازك\n3. أضف اسم الحزمة لتطبيق الكاميرا الذي تريد تعديله\n4. اضغط على الحزمة لتحرير قواعدها\n5. أضف قواعد لتجاوز معلمات كاميرا محددة\n\nتنطبق القواعد العامة على جميع تطبيقات الكاميرا، بينما تتجاوز القواعد الخاصة بالحزمة القواعد العامة لذلك التطبيق المحدد.\n\nتشمل المعلمات المدعومة وقت التعريض، ISO، وضع تقليل الضوضاء، وضع تحسين الحواف، وضع التظليل، والعديد من مفاتيح طلب التقاط Camera2.</string>
+    <string name="github" translatable="false">GitHub</string>
+    <string name="github_url" translatable="false">https://github.com/ItzDFPlayer/CaptureRequestInjector</string>
+    
+    <!-- RuleEditorActivity -->
+    <string name="rules">القواعد</string>
+    <string name="add_rule">إضافة قاعدة</string>
+    <string name="edit_rule">تحرير القاعدة</string>
+    <string name="save">حفظ</string>
+    <string name="vendor_key">مفتاح البائع</string>
+    <string name="tag_preset">إعداد مسبق للعلامة</string>
+    <string name="select_tag">تحديد علامة</string>
+    <string name="key_name">اسم المفتاح</string>
+    <string name="type">النوع</string>
+    <string name="select_type">تحديد النوع</string>
+    <string name="value">القيمة</string>
+    <string name="enabled">مفعّل</string>
+    <string name="custom">مخصص</string>
+    
+    <!-- Settings -->
+    <string name="settings">الإعدادات</string>
+    <string name="disable_global_rules">تعطيل القواعد العامة</string>
+    <string name="disable_all_rules">تعطيل جميع القواعد</string>
+</resources>

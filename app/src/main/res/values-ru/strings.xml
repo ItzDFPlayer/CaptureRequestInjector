@@ -1,0 +1,38 @@
+<resources>
+    <!-- MainActivity -->
+    <string name="add_package">Добавить пакет</string>
+    <string name="package_hint">например com.google.android.GoogleCamera</string>
+    <string name="add">Добавить</string>
+    <string name="cancel">Отмена</string>
+    <string name="delete_package">Удалить пакет</string>
+    <string name="delete_package_message">Удалить %1$s и все его правила?</string>
+    <string name="delete">Удалить</string>
+    <string name="cannot_delete_global">Невозможно удалить глобальные</string>
+    <string name="cannot_delete_global_message">Глобальные правила нельзя удалить. Вместо этого вы можете отключить отдельные правила.</string>
+    <string name="ok">ОК</string>
+    <string name="global_rules">Глобальные правила</string>
+    <string name="edit_rules">Редактировать правила</string>
+    <string name="info">Информация</string>
+    <string name="app_info_title">О Capture Request Injector</string>
+    <string name="app_info_text">Capture Request Injector — это модуль Xposed/LSPosed, который позволяет переопределять параметры запроса захвата (Capture Request) камеры на устройствах Android.\n\nКак использовать:\n\n1. Включите модуль в LSPosed для целевого приложения\n2. Перезагрузите устройство\n3. Добавьте имя пакета для приложения камеры, которое вы хотите изменить\n4. Нажмите на пакет, чтобы редактировать его правила\n5. Добавьте правила для переопределения конкретных параметров камеры\n\nГлобальные правила применяются ко всем приложениям камеры, в то время как правила для конкретного пакета переопределяют глобальные правила для этого конкретного приложения.\n\nПоддерживаемые параметры включают время экспозиции, ISO, режим шумоподавления, режим повышения резкости, режим затенения и многие другие ключи запроса захвата Camera2.</string>
+
+    <!-- RuleEditorActivity -->
+    <string name="rules">Правила</string>
+    <string name="add_rule">Добавить правило</string>
+    <string name="edit_rule">Редактировать правило</string>
+    <string name="save">Сохранить</string>
+    <string name="vendor_key">Ключ вендора</string>
+    <string name="tag_preset">Предустановка тега</string>
+    <string name="select_tag">Выбрать тег</string>
+    <string name="key_name">Имя ключа</string>
+    <string name="type">Тип</string>
+    <string name="select_type">Выбрать тип</string>
+    <string name="value">Значение</string>
+    <string name="enabled">Включено</string>
+    <string name="custom">ПОЛЬЗОВАТЕЛЬСКИЙ</string>
+    
+    <!-- Settings -->
+    <string name="settings">Настройки</string>
+    <string name="disable_global_rules">Отключить глобальные правила</string>
+    <string name="disable_all_rules">Отключить все правила</string>
+</resources>

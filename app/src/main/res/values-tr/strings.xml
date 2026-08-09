@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name" translatable="false">Capture Request Injector</string>
+
+    <!-- MainActivity -->
+    <string name="add_package">Paket ekle</string>
+    <string name="package_hint">örn. com.google.android.GoogleCamera</string>
+    <string name="add">Ekle</string>
+    <string name="cancel">İptal</string>
+    <string name="delete_package">Paketi Sil</string>
+    <string name="delete_package_message">%1$s ve tüm kuralları silinsin mi?</string>
+    <string name="delete">Sil</string>
+    <string name="cannot_delete_global">Küresel Silinemez</string>
+    <string name="cannot_delete_global_message">Küresel kurallar silinemez. Bunun yerine bireysel kuralları devre dışı bırakabilirsiniz.</string>
+    <string name="ok">Tamam</string>
+    <string name="global_rules">Küresel Kurallar</string>
+    <string name="edit_rules">Kuralları Düzenle</string>
+    <string name="info">Bilgi</string>
+    <string name="app_info_title">Capture Request Injector Hakkında</string>
+    <string name="app_info_text">"Capture Request Injector, Android cihazlarda kamera yakalama isteği parametrelerini geçersiz kılmanıza olanak tanıyan bir Xposed/LSPosed modülüdür.\n\nNasıl kullanılır:\n\n1. Modülü hedef uygulama için LSPosed'da etkinleştirin\n2. Cihazınızı yeniden başlatın\n3. Değiştirmek istediğiniz kamera uygulamasının paket adını ekleyin\n4. Pakete dokunarak kurallarını düzenleyin\n5. Belirli kamera parametrelerini geçersiz kılmak için kurallar ekleyin\n\nKüresel kurallar tüm kamera uygulamaları için geçerlidir, pakete özel kurallar ise o uygulama için küresel kuralları geçersiz kılar.\n\nDesteklenen parametreler arasında pozlama süresi, ISO, gürültü azaltma modu, kenar geliştirme modu, gölgeleme modu ve daha birçok Camera2 yakalama isteği anahtarı bulunur."</string>
+    <string name="github" translatable="false">GitHub</string>
+    <string name="github_url" translatable="false">https://github.com/ItzDFPlayer/CaptureRequestInjector</string>
+
+    <!-- RuleEditorActivity -->
+    <string name="rules">Kurallar</string>
+    <string name="add_rule">Kural Ekle</string>
+    <string name="edit_rule">Kuralı Düzenle</string>
+    <string name="save">Kaydet</string>
+    <string name="vendor_key">Satıcı anahtarı</string>
+    <string name="tag_preset">Etiket ön ayarı</string>
+    <string name="select_tag">Etiket seç</string>
+    <string name="key_name">Anahtar adı</string>
+    <string name="type">Tür</string>
+    <string name="select_type">Tür seç</string>
+    <string name="value">Değer</string>
+    <string name="enabled">Etkin</string>
+    <string name="custom">ÖZEL</string>
+    
+    <!-- Settings -->
+    <string name="settings">Ayarlar</string>
+    <string name="disable_global_rules">Küresel kuralları devre dışı bırak</string>
+    <string name="disable_all_rules">Tüm kuralları devre dışı bırak</string>
+</resources>

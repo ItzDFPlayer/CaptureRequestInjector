@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name" translatable="false">Capture Request Injector</string>
+    
+    <!-- MainActivity -->
+    <string name="add_package">প্যাকেজ যোগ করুন</string>
+    <string name="package_hint">যেমন com.google.android.GoogleCamera</string>
+    <string name="add">যোগ করুন</string>
+    <string name="cancel">বাতিল</string>
+    <string name="delete_package">প্যাকেজ মুছুন</string>
+    <string name="delete_package_message">%1$s এবং এর সমস্ত নিয়ম মুছবেন?</string>
+    <string name="delete">মুছুন</string>
+    <string name="cannot_delete_global">গ্লোবাল মুছা যাবে না</string>
+    <string name="cannot_delete_global_message">গ্লোবাল নিয়ম মুছা যাবে না। আপনি পরিবর্তে পৃথক নিয়মগুলি নিষ্ক্রিয় করতে পারেন।</string>
+    <string name="ok">ঠিক আছে</string>
+    <string name="global_rules">গ্লোবাল নিয়ম</string>
+    <string name="edit_rules">নিয়ম সম্পাদনা করুন</string>
+    <string name="info">তথ্য</string>
+    <string name="app_info_title">Capture Request Injector সম্পর্কে</string>
+    <string name="app_info_text">Capture Request Injector একটি Xposed/LSPosed মডিউল যা আপনাকে Android ডিভাইসে ক্যামেরা ক্যাপচার অনুরোধ প্যারামিটার ওভাররাইড করতে দেয়।\n\nকিভাবে ব্যবহার করবেন:\n\n1. লক্ষ্য অ্যাপের জন্য LSPosed-এ মডিউলটি সক্রিয় করুন\n2. আপনার ডিভাইস রিবুট করুন\n3. আপনি যে ক্যামেরা অ্যাপ পরিবর্তন করতে চান তার প্যাকেজ নাম যোগ করুন\n4. প্যাকেজে আলতো চাপুন এর নিয়ম সম্পাদনা করতে\n5. নির্দিষ্ট ক্যামেরা প্যারামিটার ওভাররাইড করতে নিয়ম যোগ করুন\n\nগ্লোবাল নিয়ম সমস্ত ক্যামেরা অ্যাপের জন্য প্রযোজ্য, যখন প্যাকেজ-নির্দিষ্ট নিয়মগুলি সেই বিশেষ অ্যাপের জন্য গ্লোবাল নিয়মগুলিকে ওভাররাইড করে।\n\nসমর্থিত প্যারামিটারগুলির মধ্যে রয়েছে এক্সপোজার সময়, ISO, শব্দ কমানো মোড, এজ এনহ্যান্সমেন্ট মোড, শেডিং মোড এবং আরও অনেক Camera2 ক্যাপচার অনুরোধ কী।</string>
+    <string name="github" translatable="false">GitHub</string>
+    <string name="github_url" translatable="false">https://github.com/ItzDFPlayer/CaptureRequestInjector</string>
+    
+    <!-- RuleEditorActivity -->
+    <string name="rules">নিয়ম</string>
+    <string name="add_rule">নিয়ম যোগ করুন</string>
+    <string name="edit_rule">নিয়ম সম্পাদনা করুন</string>
+    <string name="save">সংরক্ষণ করুন</string>
+    <string name="vendor_key">বিক্রেতা কী</string>
+    <string name="tag_preset">ট্যাগ প্রিসেট</string>
+    <string name="select_tag">ট্যাগ নির্বাচন করুন</string>
+    <string name="key_name">কী নাম</string>
+    <string name="type">ধরণ</string>
+    <string name="select_type">ধরণ নির্বাচন করুন</string>
+    <string name="value">মান</string>
+    <string name="enabled">সক্রিয়</string>
+    <string name="custom">কাস্টম</string>
+    
+    <!-- Settings -->
+    <string name="settings">সেটিংস</string>
+    <string name="disable_global_rules">গ্লোবাল নিয়ম নিষ্ক্রিয় করুন</string>
+    <string name="disable_all_rules">সমস্ত নিয়ম নিষ্ক্রিয় করুন</string>
+</resources>

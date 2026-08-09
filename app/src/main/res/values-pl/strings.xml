@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name" translatable="false">Capture Request Injector</string>
+    
+    <!-- MainActivity -->
+    <string name="add_package">Dodaj pakiet</string>
+    <string name="package_hint">np. com.google.android.GoogleCamera</string>
+    <string name="add">Dodaj</string>
+    <string name="cancel">Anuluj</string>
+    <string name="delete_package">Usuń pakiet</string>
+    <string name="delete_package_message">Usunąć %1$s i wszystkie jego reguły?</string>
+    <string name="delete">Usuń</string>
+    <string name="cannot_delete_global">Nie można usunąć globalnych</string>
+    <string name="cannot_delete_global_message">Nie można usunąć reguł globalnych. Zamiast tego możesz wyłączyć poszczególne reguły.</string>
+    <string name="ok">OK</string>
+    <string name="global_rules">Reguły globalne</string>
+    <string name="edit_rules">Edytuj reguły</string>
+    <string name="info">Informacje</string>
+    <string name="app_info_title">O Capture Request Injector</string>
+    <string name="app_info_text">Capture Request Injector to moduł Xposed/LSPosed, który pozwala zastąpić parametry żądań przechwytywania aparatu na urządzeniach z Androidem.\n\nJak używać:\n\n1. Włącz moduł w LSPosed dla docelowej aplikacji\n2. Uruchom ponownie urządzenie\n3. Dodaj nazwę pakietu dla aplikacji aparatu, którą chcesz zmodyfikować\n4. Kliknij na pakiet, aby edytować jego reguły\n5. Dodaj reguły, aby zastąpić określone parametry aparatu\n\nReguły globalne dotyczą wszystkich aplikacji aparatu, natomiast reguły specyficzne dla pakietu zastępują reguły globalne dla tej konkretnej aplikacji.\n\nObsługiwane parametry obejmują czas naświetlania, ISO, tryb redukcji szumów, tryb wzmacniania krawędzi, tryb cieniowania i wiele innych kluczy żądań przechwytywania Camera2.</string>
+    <string name="github" translatable="false">GitHub</string>
+    <string name="github_url" translatable="false">https://github.com/ItzDFPlayer/CaptureRequestInjector</string>
+    
+    <!-- RuleEditorActivity -->
+    <string name="rules">Reguły</string>
+    <string name="add_rule">Dodaj regułę</string>
+    <string name="edit_rule">Edytuj regułę</string>
+    <string name="save">Zapisz</string>
+    <string name="vendor_key">Klucz dostawcy</string>
+    <string name="tag_preset">Predefiniowany tag</string>
+    <string name="select_tag">Wybierz tag</string>
+    <string name="key_name">Nazwa klucza</string>
+    <string name="type">Typ</string>
+    <string name="select_type">Wybierz typ</string>
+    <string name="value">Wartość</string>
+    <string name="enabled">Włączone</string>
+    <string name="custom">NIESTANDARDOWE</string>
+    
+    <!-- Settings -->
+    <string name="settings">Ustawienia</string>
+    <string name="disable_global_rules">Wyłącz reguły globalne</string>
+    <string name="disable_all_rules">Wyłącz wszystkie reguły</string>
+</resources>

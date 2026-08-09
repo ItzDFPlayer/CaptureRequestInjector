@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name" translatable="false">Capture Request Injector</string>
+    
+    <!-- MainActivity -->
+    <string name="add_package">افزودن بسته</string>
+    <string name="package_hint">به عنوان مثال com.google.android.GoogleCamera</string>
+    <string name="add">افزودن</string>
+    <string name="cancel">لغو</string>
+    <string name="delete_package">حذف بسته</string>
+    <string name="delete_package_message">آیا %1$s و تمام قوانین آن حذف شوند؟</string>
+    <string name="delete">حذف</string>
+    <string name="cannot_delete_global">قابل حذف نیست سراسری</string>
+    <string name="cannot_delete_global_message">قوانین سراسری قابل حذف نیستند. می‌توانید به جای آن قوانین فردی را غیرفعال کنید.</string>
+    <string name="ok">تأیید</string>
+    <string name="global_rules">قوانین سراسری</string>
+    <string name="edit_rules">ویرایش قوانین</string>
+    <string name="info">اطلاعات</string>
+    <string name="app_info_title">درباره Capture Request Injector</string>
+    <string name="app_info_text">Capture Request Injector یک ماژول Xposed/LSPosed است که به شما امکان می‌دهد پارامترهای درخواست ضبط دوربین را در دستگاه‌های Android لغو کنید.\n\nنحوه استفاده:\n\n1. ماژول را در LSPosed برای برنامه هدف فعال کنید\n2. دستگاه خود را مجدداً راه‌اندازی کنید\n3. نام بسته را برای برنامه دوربین که می‌خواهید تغییر دهید اضافه کنید\n4. روی بسته ضربه بزنید تا قوانین آن را ویرایش کنید\n5. قوانینی اضافه کنید تا پارامترهای خاص دوربین را لغو کنید\n\nقوانین سراسری برای همه برنامه‌های دوربین اعمال می‌شود، در حالی که قوانین ویژه بسته، قوانین سراسری را برای آن برنامه خاص لغو می‌کنند.\n\nپارامترهای پشتیبانی شده شامل زمان نوردهی، ISO، حالت کاهش نویز، حالت بهبود لبه، حالت سایه‌زنی و بسیاری از کلیدهای درخواست ضبط Camera2 است.</string>
+    <string name="github" translatable="false">GitHub</string>
+    <string name="github_url" translatable="false">https://github.com/ItzDFPlayer/CaptureRequestInjector</string>
+    
+    <!-- RuleEditorActivity -->
+    <string name="rules">قوانین</string>
+    <string name="add_rule">افزودن قانون</string>
+    <string name="edit_rule">ویرایش قانون</string>
+    <string name="save">ذخیره</string>
+    <string name="vendor_key">کلید فروشنده</string>
+    <string name="tag_preset">پیش‌تنظیم برچسب</string>
+    <string name="select_tag">انتخاب برچسب</string>
+    <string name="key_name">نام کلید</string>
+    <string name="type">نوع</string>
+    <string name="select_type">انتخاب نوع</string>
+    <string name="value">مقدار</string>
+    <string name="enabled">فعال</string>
+    <string name="custom">سفارشی</string>
+    
+    <!-- Settings -->
+    <string name="settings">تنظیمات</string>
+    <string name="disable_global_rules">غیرفعال کردن قوانین سراسری</string>
+    <string name="disable_all_rules">غیرفعال کردن تمام قوانین</string>
+</resources>

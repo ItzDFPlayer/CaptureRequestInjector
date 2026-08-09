@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.CaptureRequestInjector" parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">
+        <!-- Material You dynamic colors on Android 12+ -->
+    </style>
+</resources>

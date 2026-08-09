@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name" translatable="false">Capture Request Injector</string>
+    
+    <!-- MainActivity -->
+    <string name="add_package">Añadir paquete</string>
+    <string name="package_hint">ej. com.google.android.GoogleCamera</string>
+    <string name="add">Añadir</string>
+    <string name="cancel">Cancelar</string>
+    <string name="delete_package">Eliminar paquete</string>
+    <string name="delete_package_message">¿Eliminar %1$s y todas sus reglas?</string>
+    <string name="delete">Eliminar</string>
+    <string name="cannot_delete_global">No se puede eliminar global</string>
+    <string name="cannot_delete_global_message">Las reglas globales no se pueden eliminar. Puede deshabilitar reglas individuales en su lugar.</string>
+    <string name="ok">Aceptar</string>
+    <string name="global_rules">Reglas globales</string>
+    <string name="edit_rules">Editar reglas</string>
+    <string name="info">Información</string>
+    <string name="app_info_title">Acerca de Capture Request Injector</string>
+    <string name="app_info_text">Capture Request Injector es un módulo Xposed/LSPosed que le permite anular los parámetros de solicitud de captura de la cámara en dispositivos Android.\n\nCómo usar:\n\n1. Active el módulo en LSPosed para la aplicación objetivo\n2. Reinicie su dispositivo\n3. Agregue el nombre del paquete para la aplicación de cámara que desea modificar\n4. Toque el paquete para editar sus reglas\n5. Agregue reglas para anular parámetros específicos de la cámara\n\nLas reglas globales se aplican a todas las aplicaciones de cámara, mientras que las reglas específicas del paquete anulan las reglas globales para esa aplicación en particular.\n\nLos parámetros compatibles incluyen tiempo de exposición, ISO, modo de reducción de ruido, modo de mejora de bordes, modo de sombreado y muchas otras claves de solicitud de captura de Camera2.</string>
+    <string name="github" translatable="false">GitHub</string>
+    <string name="github_url" translatable="false">https://github.com/ItzDFPlayer/CaptureRequestInjector</string>
+    
+    <!-- RuleEditorActivity -->
+    <string name="rules">Reglas</string>
+    <string name="add_rule">Añadir regla</string>
+    <string name="edit_rule">Editar regla</string>
+    <string name="save">Guardar</string>
+    <string name="vendor_key">Clave de proveedor</string>
+    <string name="tag_preset">Preajuste de etiqueta</string>
+    <string name="select_tag">Seleccionar etiqueta</string>
+    <string name="key_name">Nombre de la clave</string>
+    <string name="type">Tipo</string>
+    <string name="select_type">Seleccionar tipo</string>
+    <string name="value">Valor</string>
+    <string name="enabled">Habilitado</string>
+    <string name="custom">PERSONALIZADO</string>
+    
+    <!-- Settings -->
+    <string name="settings">Configuración</string>
+    <string name="disable_global_rules">Desactivar reglas globales</string>
+    <string name="disable_all_rules">Desactivar todas las reglas</string>
+</resources>

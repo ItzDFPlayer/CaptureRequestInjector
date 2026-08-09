@@ -1,0 +1,42 @@
+<resources>
+    <string name="app_name" translatable="false">Capture Request Injector</string>
+    
+    <!-- MainActivity -->
+    <string name="add_package">Tambah paket</string>
+    <string name="package_hint">misal com.google.android.GoogleCamera</string>
+    <string name="add">Tambah</string>
+    <string name="cancel">Batal</string>
+    <string name="delete_package">Hapus Paket</string>
+    <string name="delete_package_message">Hapus %1$s dan semua aturannya?</string>
+    <string name="delete">Hapus</string>
+    <string name="cannot_delete_global">Tidak Dapat Menghapus Global</string>
+    <string name="cannot_delete_global_message">Aturan global tidak dapat dihapus. Anda dapat menonaktifkan aturan individual sebagai gantinya.</string>
+    <string name="ok">OK</string>
+    <string name="global_rules">Aturan Global</string>
+    <string name="edit_rules">Edit Aturan</string>
+    <string name="info">Info</string>
+    <string name="app_info_title">Tentang Capture Request Injector</string>
+    <string name="app_info_text">Capture Request Injector adalah modul Xposed/LSPosed yang memungkinkan Anda mengganti parameter permintaan penangkapan kamera pada perangkat Android.\n\nCara penggunaan:\n\n1. Aktifkan modul di LSPosed untuk aplikasi target\n2. Reboot perangkat Anda\n3. Tambahkan nama paket untuk aplikasi kamera yang ingin Anda modifikasi\n4. Ketuk paket untuk mengedit aturannya\n5. Tambahkan aturan untuk mengganti parameter kamera tertentu\n\nAturan global berlaku untuk semua aplikasi kamera, sedangkan aturan khusus paket akan mengganti aturan global untuk aplikasi tersebut.\n\nParameter yang didukung termasuk waktu eksposur, ISO, mode pengurangan noise, mode peningkatan tepi, mode shading, dan banyak kunci permintaan penangkapan Camera2 lainnya.</string>
+    <string name="github" translatable="false">GitHub</string>
+    <string name="github_url" translatable="false">https://github.com/ItzDFPlayer/CaptureRequestInjector</string>
+    
+    <!-- RuleEditorActivity -->
+    <string name="rules">Aturan</string>
+    <string name="add_rule">Tambah Aturan</string>
+    <string name="edit_rule">Edit Aturan</string>
+    <string name="save">Simpan</string>
+    <string name="vendor_key">Kunci vendor</string>
+    <string name="tag_preset">Prasetel tag</string>
+    <string name="select_tag">Pilih tag</string>
+    <string name="key_name">Nama kunci</string>
+    <string name="type">Tipe</string>
+    <string name="select_type">Pilih tipe</string>
+    <string name="value">Nilai</string>
+    <string name="enabled">Diaktifkan</string>
+    <string name="custom">KUSTOM</string>
+    
+    <!-- Settings -->
+    <string name="settings">Pengaturan</string>
+    <string name="disable_global_rules">Nonaktifkan aturan global</string>
+    <string name="disable_all_rules">Nonaktifkan semua aturan</string>
+</resources>

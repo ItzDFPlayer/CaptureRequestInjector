@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        android:maxSdkVersion="29" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+
+    <application
+        android:name="com.itzdfplayer.capturerequestinjector.CaptureRequestInjectorApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.CaptureRequestInjector"
+        android:description="@string/xposed_description"
+        tools:ignore="MissingApplicationIcon">
+
+        <activity
+            android:name="com.itzdfplayer.capturerequestinjector.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.CaptureRequestInjector">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <activity
+            android:name="com.itzdfplayer.capturerequestinjector.RuleEditorActivity"
+            android:exported="false"
+            android:label="Edit Rules"
+            android:theme="@style/Theme.CaptureRequestInjector" />
+
+        <provider
+            android:name="com.itzdfplayer.capturerequestinjector.RuleProvider"
+            android:authorities="com.itzdfplayer.capturerequestinjector.provider"
+            android:exported="false" />
+
+        <service
+            android:name="com.itzdfplayer.capturerequestinjector.DisableGlobalRulesTileService"
+            android:exported="true"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:icon="@drawable/settings"
+            android:label="@string/disable_global_rules">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.ACTIVE_TILE"
+                android:value="true" />
+            <meta-data
+                android:name="android.service.quicksettings.TILE_METADATA"
+                android:resource="@xml/tile_disable_global_rules" />
+        </service>
+
+        <service
+            android:name="com.itzdfplayer.capturerequestinjector.DisableAllRulesTileService"
+            android:exported="true"
+            android:permission="android.permission.BIND_QUICK_SETTINGS_TILE"
+            android:icon="@drawable/settings"
+            android:label="@string/disable_all_rules">
+            <intent-filter>
+                <action android:name="android.service.quicksettings.action.QS_TILE" />
+            </intent-filter>
+            <meta-data
+                android:name="android.service.quicksettings.ACTIVE_TILE"
+                android:value="true" />
+            <meta-data
+                android:name="android.service.quicksettings.TILE_METADATA"
+                android:resource="@xml/tile_disable_all_rules" />
+        </service>
+    </application>
+
+</manifest>
