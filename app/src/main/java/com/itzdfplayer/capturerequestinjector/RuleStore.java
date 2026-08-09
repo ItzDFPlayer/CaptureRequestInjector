@@ -38,20 +38,31 @@ public class RuleStore {
         return prefs.getString(targetPackage, null);
     }
 
-    private static void saveRulesToFile(Context context) {
+    static void saveRulesToFile(Context context) {
         try {
             SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
+            SharedPreferences settingsPrefs = context.getSharedPreferences("camtags_settings", Context.MODE_PRIVATE);
             Map<String, ?> all = prefs.getAll();
             
-            // Build a JSON object with all package rules
+            // Build a JSON object with all package rules and settings
             StringBuilder json = new StringBuilder("{");
             boolean first = true;
+            
+            // Add package rules
             for (Map.Entry<String, ?> entry : all.entrySet()) {
                 if (!first) json.append(",");
                 json.append("\"").append(entry.getKey()).append("\":");
                 json.append(entry.getValue());
                 first = false;
             }
+            
+            // Add settings
+            if (!first) json.append(",");
+            json.append("\"settings\":{");
+            json.append("\"disable_global_rules\":").append(settingsPrefs.getBoolean("disable_global_rules", false));
+            json.append(",\"disable_all_rules\":").append(settingsPrefs.getBoolean("disable_all_rules", false));
+            json.append("}");
+            
             json.append("}");
 
             // Write to external storage for cross-process access

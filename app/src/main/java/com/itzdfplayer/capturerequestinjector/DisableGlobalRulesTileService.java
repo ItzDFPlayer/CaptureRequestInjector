@@ -17,6 +17,7 @@ public class DisableGlobalRulesTileService extends TileService {
         boolean newState = !currentState;
         
         prefs.edit().putBoolean(KEY_DISABLE_GLOBAL_RULES, newState).apply();
+        RuleStore.saveRulesToFile(this);
         updateTile();
     }
     

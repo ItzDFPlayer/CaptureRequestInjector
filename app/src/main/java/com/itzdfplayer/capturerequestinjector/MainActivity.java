@@ -230,6 +230,8 @@ public class MainActivity extends AppCompatActivity {
                             .putBoolean(KEY_DISABLE_GLOBAL_RULES, switchDisableGlobalRules.isChecked())
                             .putBoolean(KEY_DISABLE_ALL_RULES, switchDisableAllRules.isChecked())
                             .apply();
+                    // Trigger JSON file update
+                    RuleStore.saveRulesToFile(this);
                 })
                 .setNegativeButton(R.string.cancel, null)
                 .show();

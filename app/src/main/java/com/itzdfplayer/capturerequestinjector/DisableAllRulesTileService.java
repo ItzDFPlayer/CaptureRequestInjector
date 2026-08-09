@@ -17,6 +17,7 @@ public class DisableAllRulesTileService extends TileService {
         boolean newState = !currentState;
         
         prefs.edit().putBoolean(KEY_DISABLE_ALL_RULES, newState).apply();
+        RuleStore.saveRulesToFile(this);
         updateTile();
     }
     

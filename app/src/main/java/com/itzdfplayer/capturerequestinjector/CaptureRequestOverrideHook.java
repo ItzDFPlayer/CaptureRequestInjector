@@ -97,8 +97,28 @@ public class CaptureRequestOverrideHook extends XposedModule {
                 return;
             }
 
-            // Apply global rules first (baseline)
-            applyRulesForPackage(allRules, "global", builder, targetPackage);
+            // Check if all rules are disabled
+            boolean disableAllRules = false;
+            boolean disableGlobalRules = false;
+            
+            if (allRules.has("settings")) {
+                JSONObject settings = allRules.getJSONObject("settings");
+                disableAllRules = settings.optBoolean("disable_all_rules", false);
+                disableGlobalRules = settings.optBoolean("disable_global_rules", false);
+                android.util.Log.d(TAG, "Settings - disableAllRules: " + disableAllRules + ", disableGlobalRules: " + disableGlobalRules);
+            }
+            
+            if (disableAllRules) {
+                android.util.Log.d(TAG, "All rules are disabled, skipping rule application");
+                return;
+            }
+
+            // Apply global rules first (baseline) - unless disabled
+            if (!disableGlobalRules) {
+                applyRulesForPackage(allRules, "global", builder, targetPackage);
+            } else {
+                android.util.Log.d(TAG, "Global rules are disabled, skipping global rules");
+            }
             // Apply package-specific rules second (overrides global for same keys)
             applyRulesForPackage(allRules, targetPackage, builder, targetPackage);
         } catch (Exception e) {
