@@ -2,16 +2,17 @@ package com.itzdfplayer.capturerequestinjector;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-
-import com.google.android.material.textfield.TextInputEditText;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.materialswitch.MaterialSwitch;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -56,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new PackageAdapter(packageList, this::onPackageClicked);
+        adapter = new PackageAdapter(this, packageList, this::onPackageClicked);
         adapter.setOnPackageDeleteListener(this::onPackageDelete);
         recyclerView.setAdapter(adapter);
 
@@ -176,21 +178,55 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showAddPackageDialog() {
-        View dialogView = getLayoutInflater().inflate(R.layout.dialog_add_package, null);
-        TextInputEditText packageInput = dialogView.findViewById(R.id.packageInput);
+        View dialogView = getLayoutInflater().inflate(R.layout.dialog_app_list, null);
+        TextInputEditText searchInput = dialogView.findViewById(R.id.searchInput);
+        MaterialSwitch showSystemApps = dialogView.findViewById(R.id.showSystemApps);
+        RecyclerView appRecyclerView = dialogView.findViewById(R.id.appRecyclerView);
         
-        new MaterialAlertDialogBuilder(this)
+        android.app.AlertDialog dialog = new MaterialAlertDialogBuilder(this)
                 .setTitle(R.string.add_package)
                 .setView(dialogView)
-                .setPositiveButton(R.string.add, (dialog, which) -> {
-                    String pkg = packageInput.getText().toString().trim();
-                    if (!pkg.isEmpty()) {
-                        RuleStore.saveRules(this, pkg, new ArrayList<>());
-                        loadPackageList();
-                    }
-                })
                 .setNegativeButton(R.string.cancel, null)
-                .show();
+                .create();
+        
+        PackageManager pm = getPackageManager();
+        AppListAdapter adapter = new AppListAdapter(this, pm, packageName -> {
+            RuleStore.saveRules(this, packageName, new ArrayList<>());
+            loadPackageList();
+            dialog.dismiss();
+        });
+        
+        appRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        appRecyclerView.setAdapter(adapter);
+        
+        // Load initial apps (non-system only)
+        loadApps(adapter, showSystemApps.isChecked());
+        
+        showSystemApps.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            loadApps(adapter, isChecked);
+            adapter.filter(searchInput.getText().toString());
+        });
+        
+        searchInput.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                adapter.filter(s.toString());
+            }
+            
+            @Override
+            public void afterTextChanged(Editable s) {}
+        });
+        
+        dialog.show();
+    }
+    
+    private void loadApps(AppListAdapter adapter, boolean showSystemApps) {
+        PackageManager pm = getPackageManager();
+        List<ApplicationInfo> apps = pm.getInstalledApplications(PackageManager.GET_META_DATA);
+        adapter.setApps(apps, showSystemApps);
     }
 
     private void scanCameraApps() {
