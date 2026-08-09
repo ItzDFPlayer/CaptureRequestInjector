@@ -14,7 +14,7 @@ on:
       create_release:
         description: 'Create GitHub release'
         required: true
-        default: 'true'
+        default: true
         type: boolean
 
 jobs:
@@ -41,8 +41,17 @@ jobs:
           sed -i "s/versionName = \".*\"/versionName = \"${{ github.event.inputs.version_name }}\"/g" app/build.gradle.kts
           sed -i "s/versionCode = .*/versionCode = ${{ github.event.inputs.version_code }}/g" app/build.gradle.kts
       
+      - name: Decode keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_FILE }}" | base64 -d > app/keystore.jks
+      
       - name: Build Release APK
         run: ./gradlew assembleRelease
+        env:
+          KEYSTORE_FILE: app/keystore.jks
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
       
       - name: Upload APK as artifact
         uses: actions/upload-artifact@v4
