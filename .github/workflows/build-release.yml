@@ -44,19 +44,19 @@ jobs:
       
       - name: Decode keystore
         run: |
-          echo "${{ secrets.KEYSTORE_FILE }}" | base64 --decode > keystore.jks
+          echo "${{ secrets.KEYSTORE_FILE }}" | base64 --decode > app/keystore.jks
       
       - name: Build Release APK
         run: ./gradlew assembleRelease
         env:
-          KEYSTORE_FILE: keystore.jks
+          KEYSTORE_FILE: app/keystore.jks
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
 
       - name: Clean up secrets
         if: always()
-        run: rm -f keystore.jks
+        run: rm -f app/keystore.jks
       
       - name: Upload APK as artifact
         uses: actions/upload-artifact@v4
