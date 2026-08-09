@@ -32,39 +32,43 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
+          cache: 'gradle' # Enables caching for faster builds
       
       - name: Grant execute permission for gradlew
         run: chmod +x gradlew
       
       - name: Update version in build.gradle.kts
         run: |
-          sed -i "s/versionName = \".*\"/versionName = \"${{ github.event.inputs.version_name }}\"/g" app/build.gradle.kts
-          sed -i "s/versionCode = .*/versionCode = ${{ github.event.inputs.version_code }}/g" app/build.gradle.kts
+          sed -i "s/versionName = \".*\"/versionName = \"${{ inputs.version_name }}\"/g" app/build.gradle.kts
+          sed -i "s/versionCode = .*/versionCode = ${{ inputs.version_code }}/g" app/build.gradle.kts
       
       - name: Decode keystore
         run: |
-          echo "${{ secrets.KEYSTORE_FILE }}" | base64 -d > app/keystore.jks
+          echo "${{ secrets.KEYSTORE_FILE }}" | base64 --decode > keystore.jks
       
       - name: Build Release APK
         run: ./gradlew assembleRelease
         env:
-          KEYSTORE_FILE: app/keystore.jks
+          KEYSTORE_FILE: keystore.jks
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+
+      - name: Clean up secrets
+        if: always()
+        run: rm -f keystore.jks
       
       - name: Upload APK as artifact
         uses: actions/upload-artifact@v4
         with:
-          name: CaptureRequestInjector-v${{ github.event.inputs.version_name }}-release
+          name: CaptureRequestInjector-v${{ inputs.version_name }}-release
           path: app/build/outputs/apk/release/app-release.apk
           retention-days: 90
       
       - name: Generate changelog
         id: changelog
-        if: ${{ github.event.inputs.create_release == 'true' }}
+        if: ${{ inputs.create_release }}
         run: |
-          # Get the latest tag
           LATEST_TAG=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
           
           if [ -z "$LATEST_TAG" ]; then
@@ -79,10 +83,6 @@ jobs:
             CHANGELOG="No changes since last release"
           fi
           
-          # Save changelog to file
-          echo "$CHANGELOG" > changelog.txt
-          
-          # Set output for GitHub step
           {
             echo 'changelog<<EOF'
             echo "$CHANGELOG"
@@ -90,11 +90,11 @@ jobs:
           } >> $GITHUB_OUTPUT
       
       - name: Create GitHub Release
-        if: ${{ github.event.inputs.create_release == 'true' }}
-        uses: softprops/action-gh-release@v1
+        if: ${{ inputs.create_release }}
+        uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ github.event.inputs.version_name }}
-          name: Release v${{ github.event.inputs.version_name }}
+          tag_name: v${{ inputs.version_name }}
+          name: Release v${{ inputs.version_name }}
           body: ${{ steps.changelog.outputs.changelog }}
           files: app/build/outputs/apk/release/app-release.apk
           draft: false
