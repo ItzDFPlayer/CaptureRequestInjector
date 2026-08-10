@@ -3,21 +3,20 @@ package com.itzdfplayer.capturerequestinjector;
 import android.content.SharedPreferences;
 import android.service.quicksettings.Tile;
 import android.service.quicksettings.TileService;
+import io.github.libxposed.api.XposedModule;
 
 public class DisableGlobalRulesTileService extends TileService {
-    private static final String PREFS_SETTINGS_NAME = "camtags_settings";
     private static final String KEY_DISABLE_GLOBAL_RULES = "disable_global_rules";
     
     @Override
     public void onClick() {
         super.onClick();
         
-        SharedPreferences prefs = getSharedPreferences(PREFS_SETTINGS_NAME, MODE_PRIVATE);
+        SharedPreferences prefs = XposedModule.getRemotePreferences(RuleStore.SETTINGS_PREFS_NAME);
         boolean currentState = prefs.getBoolean(KEY_DISABLE_GLOBAL_RULES, false);
         boolean newState = !currentState;
         
         prefs.edit().putBoolean(KEY_DISABLE_GLOBAL_RULES, newState).apply();
-        RuleStore.saveRulesToFile(this);
         updateTile();
     }
     
@@ -28,7 +27,7 @@ public class DisableGlobalRulesTileService extends TileService {
     }
     
     private void updateTile() {
-        SharedPreferences prefs = getSharedPreferences(PREFS_SETTINGS_NAME, MODE_PRIVATE);
+        SharedPreferences prefs = XposedModule.getRemotePreferences(RuleStore.SETTINGS_PREFS_NAME);
         boolean isDisabled = prefs.getBoolean(KEY_DISABLE_GLOBAL_RULES, false);
         
         Tile tile = getQsTile();
