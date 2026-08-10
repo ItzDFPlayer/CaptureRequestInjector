@@ -44,4 +44,8 @@
     <string name="applic_name">Назва додатка</string>
     <string name="package_name">Назва пакета</string>
     <string name="rules_enabled">Правила: %d увімкнено</string>
+
+    <!-- Root Permission -->
+    <string name="root_required">Потрібен Root</string>
+    <string name="root_required_message">Ця програма потребує root-доступу для копіювання файлів налаштувань до програм камери. Без root модуль не працюватиме належним чином.</string>
 </resources>

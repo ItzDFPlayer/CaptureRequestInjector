@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Capture Request Injector</string>
-    
     <!-- MainActivity -->
     <string name="add_package">প্যাকেজ যোগ করুন</string>
     <string name="package_hint">যেমন com.google.android.GoogleCamera</string>
@@ -48,4 +46,8 @@
     <string name="applic_name">অ্যাপের নাম</string>
     <string name="package_name">প্যাকেজের নাম</string>
     <string name="rules_enabled">নিয়ম: %d সক্রিয়</string>
+
+    <!-- Root Permission -->
+    <string name="root_required">রুট প্রয়োজন</string>
+    <string name="root_required_message">এই অ্যাপটি ক্যামেরা অ্যাপগুলিতে কনফিগারেশন ফাইল কপি করতে রুট অ্যাক্সেস প্রয়োজন। রুট ছাড়া, মডিউলটি সঠিকভাবে কাজ করবে না।</string>
 </resources>

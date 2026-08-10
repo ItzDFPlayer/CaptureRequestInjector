@@ -127,19 +127,19 @@ public class CaptureRequestOverrideHook extends XposedModule {
         }
     }
 
-    private static JSONObject loadRulesFromFile() {
+    private JSONObject loadRulesFromFile(String targetPackage) {
         try {
-            File externalDir = android.os.Environment.getExternalStorageDirectory();
-            File rulesFile = new File(externalDir, "Android/data/" + MODULE_PACKAGE + "/files/camtags_rules.json");
-            
-            android.util.Log.d(TAG, "Rules file path: " + rulesFile.getAbsolutePath());
-            android.util.Log.d(TAG, "Rules file exists: " + rulesFile.exists());
-            
+            // Read from the app's data directory (copied via root)
+            File rulesFile = new File("/data/data/" + targetPackage + "/files/camtags_rules.json");
+
+            log(Log.DEBUG, TAG, "Rules file path: " + rulesFile.getAbsolutePath());
+            log(Log.DEBUG, TAG, "Rules file exists: " + rulesFile.exists());
+
             if (!rulesFile.exists()) {
                 log(Log.DEBUG, TAG, "No rules file found");
                 return null;
             }
-            
+
             BufferedReader reader = new BufferedReader(new FileReader(rulesFile));
             StringBuilder json = new StringBuilder();
             String line;
@@ -208,25 +208,38 @@ public class CaptureRequestOverrideHook extends XposedModule {
 
     private static Class<?> classForType(String type) {
         switch (type) {
-            case Rule.TYPE_INT: return Integer.class;
-            case Rule.TYPE_FLOAT: return Float.class;
-            case Rule.TYPE_LONG: return Long.class;
-            case Rule.TYPE_BYTE: return Byte.class;
-            case Rule.TYPE_BOOLEAN: return Boolean.class;
-            case Rule.TYPE_RECT: return Rect.class;
-            case Rule.TYPE_INT_ARRAY: return int[].class;
-            default: throw new IllegalArgumentException("Unknown type: " + type);
+            case Rule.TYPE_INT:
+                return Integer.class;
+            case Rule.TYPE_FLOAT:
+                return Float.class;
+            case Rule.TYPE_LONG:
+                return Long.class;
+            case Rule.TYPE_BYTE:
+                return Byte.class;
+            case Rule.TYPE_BOOLEAN:
+                return Boolean.class;
+            case Rule.TYPE_RECT:
+                return Rect.class;
+            case Rule.TYPE_INT_ARRAY:
+                return int[].class;
+            default:
+                throw new IllegalArgumentException("Unknown type: " + type);
         }
     }
 
     private static Object parseValue(String type, String raw) {
         raw = raw.trim();
         switch (type) {
-            case Rule.TYPE_INT: return Integer.parseInt(raw);
-            case Rule.TYPE_FLOAT: return Float.parseFloat(raw);
-            case Rule.TYPE_LONG: return Long.parseLong(raw);
-            case Rule.TYPE_BYTE: return Byte.parseByte(raw);
-            case Rule.TYPE_BOOLEAN: return Boolean.parseBoolean(raw);
+            case Rule.TYPE_INT:
+                return Integer.parseInt(raw);
+            case Rule.TYPE_FLOAT:
+                return Float.parseFloat(raw);
+            case Rule.TYPE_LONG:
+                return Long.parseLong(raw);
+            case Rule.TYPE_BYTE:
+                return Byte.parseByte(raw);
+            case Rule.TYPE_BOOLEAN:
+                return Boolean.parseBoolean(raw);
             case Rule.TYPE_RECT: {
                 String[] parts = raw.split(",");
                 return new Rect(
@@ -238,10 +251,12 @@ public class CaptureRequestOverrideHook extends XposedModule {
             case Rule.TYPE_INT_ARRAY: {
                 String[] parts = raw.split(",");
                 int[] out = new int[parts.length];
-                for (int i = 0; i < parts.length; i++) out[i] = Integer.parseInt(parts[i].trim());
+                for (int i = 0; i < parts.length; i++)
+                    out[i] = Integer.parseInt(parts[i].trim());
                 return out;
             }
-            default: throw new IllegalArgumentException("Unknown type: " + type);
+            default:
+                throw new IllegalArgumentException("Unknown type: " + type);
         }
     }
 }

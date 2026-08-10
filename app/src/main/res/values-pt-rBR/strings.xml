@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Capture Request Injector</string>
-    
     <!-- MainActivity -->
     <string name="add_package">Adicionar pacote</string>
     <string name="package_hint">ex. com.google.android.GoogleCamera</string>
@@ -48,4 +46,8 @@
     <string name="applic_name">Nome do aplicativo</string>
     <string name="package_name">Nome do pacote</string>
     <string name="rules_enabled">Regras: %d ativadas</string>
+
+    <!-- Root Permission -->
+    <string name="root_required">Root Necessário</string>
+    <string name="root_required_message">Este aplicativo requer acesso root para copiar arquivos de configuração para aplicativos de câmera. Sem root, o módulo não funcionará corretamente.</string>
 </resources>

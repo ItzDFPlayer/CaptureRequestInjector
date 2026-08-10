@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Capture Request Injector</string>
-    
-    <!-- MainActivity -->
+     <!-- MainActivity -->
     <string name="add_package">افزودن بسته</string>
     <string name="package_hint">به عنوان مثال com.google.android.GoogleCamera</string>
     <string name="add">افزودن</string>
@@ -48,4 +46,8 @@
     <string name="applic_name">نام برنامه</string>
     <string name="package_name">نام بسته</string>
     <string name="rules_enabled">قوانین: %d فعال</string>
+
+    <!-- Root Permission -->
+    <string name="root_required">دسترسی روت مورد نیاز است</string>
+    <string name="root_required_message">این برنامه برای کپی فایل‌های پیکربندی به برنامه‌های دوربین به دسترسی روت نیاز دارد. بدون روت، ماژول به درستی کار نخواهد کرد.</string>
 </resources>

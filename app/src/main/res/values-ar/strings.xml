@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Capture Request Injector</string>
-    
-    <!-- MainActivity -->
+     <!-- MainActivity -->
     <string name="add_package">إضافة حزمة</string>
     <string name="package_hint">على سبيل المثال com.google.android.GoogleCamera</string>
     <string name="add">إضافة</string>
@@ -48,4 +46,8 @@
     <string name="applic_name">اسم التطبيق</string>
     <string name="package_name">اسم الحزمة</string>
     <string name="rules_enabled">القواعد: %d مفعّلة</string>
+
+    <!-- Root Permission -->
+    <string name="root_required">مطلوب صلاحيات الجذر</string>
+    <string name="root_required_message">يتطلب هذا التطبيق صلاحيات الجذر لنسخ ملفات التكوين إلى تطبيقات الكاميرا. بدون صلاحيات الجذر، لن يعمل الوحدة بشكل صحيح.</string>
 </resources>

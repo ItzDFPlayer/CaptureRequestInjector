@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Capture Request Injector</string>
-
     <!-- MainActivity -->
     <string name="add_package">添加包</string>
     <string name="package_hint">例如 com.google.android.GoogleCamera</string>
@@ -48,4 +46,8 @@
     <string name="applic_name">应用名称</string>
     <string name="package_name">包名称</string>
     <string name="rules_enabled">规则: %d 已启用</string>
+
+    <!-- Root Permission -->
+    <string name="root_required">需要 Root 权限</string>
+    <string name="root_required_message">此应用需要 Root 权限才能将配置文件复制到相机应用。没有 Root 权限，模块将无法正常工作。</string>
 </resources>

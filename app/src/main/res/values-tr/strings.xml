@@ -1,6 +1,4 @@
 <resources>
-    <string name="app_name" translatable="false">Capture Request Injector</string>
-
     <!-- MainActivity -->
     <string name="add_package">Paket ekle</string>
     <string name="package_hint">örn. com.google.android.GoogleCamera</string>
@@ -48,4 +46,8 @@
     <string name="applic_name">Uygulama adı</string>
     <string name="package_name">Paket adı</string>
     <string name="rules_enabled">Kurallar: %d etkin</string>
+
+    <!-- Root Permission -->
+    <string name="root_required">Root Gerekli</string>
+    <string name="root_required_message">Bu uygulama, yapılandırma dosyalarını kamera uygulamalarına kopyalamak için root erişimi gerektirir. Root olmadan modül düzgün çalışmayacaktır.</string>
 </resources>

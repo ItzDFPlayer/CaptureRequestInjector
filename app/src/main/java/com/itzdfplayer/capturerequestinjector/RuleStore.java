@@ -18,6 +18,15 @@ public class RuleStore {
 
     public static final String PREFS_NAME = "camtags_rules";
     private static final String RULES_FILE = "camtags_rules.json";
+    private static OnRulesSavedListener onRulesSavedListener;
+
+    public interface OnRulesSavedListener {
+        void onRulesSaved(Context context);
+    }
+
+    public static void setOnRulesSavedListener(OnRulesSavedListener listener) {
+        onRulesSavedListener = listener;
+    }
 
     public static void saveRules(Context context, String targetPackage, List<Rule> rules) {
         // Save to SharedPreferences for UI
@@ -38,16 +47,16 @@ public class RuleStore {
         return prefs.getString(targetPackage, null);
     }
 
-    static void saveRulesToFile(Context context) {
+    public static void saveRulesToFile(Context context) {
         try {
             SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
             SharedPreferences settingsPrefs = context.getSharedPreferences("camtags_settings", Context.MODE_PRIVATE);
             Map<String, ?> all = prefs.getAll();
-            
+
             // Build a JSON object with all package rules and settings
             StringBuilder json = new StringBuilder("{");
             boolean first = true;
-            
+
             // Add package rules
             for (Map.Entry<String, ?> entry : all.entrySet()) {
                 if (!first) json.append(",");
@@ -55,14 +64,14 @@ public class RuleStore {
                 json.append(entry.getValue());
                 first = false;
             }
-            
+
             // Add settings
             if (!first) json.append(",");
             json.append("\"settings\":{");
             json.append("\"disable_global_rules\":").append(settingsPrefs.getBoolean("disable_global_rules", false));
             json.append(",\"disable_all_rules\":").append(settingsPrefs.getBoolean("disable_all_rules", false));
             json.append("}");
-            
+
             json.append("}");
 
             // Write to external storage for cross-process access
@@ -70,9 +79,14 @@ public class RuleStore {
             FileOutputStream fos = new FileOutputStream(rulesFile);
             fos.write(json.toString().getBytes(StandardCharsets.UTF_8));
             fos.close();
-            
+
             // Make file readable by all
             rulesFile.setReadable(true, false);
+
+            // Notify listener that rules were saved
+            if (onRulesSavedListener != null) {
+                onRulesSavedListener.onRulesSaved(context);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

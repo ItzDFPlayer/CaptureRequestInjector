@@ -26,6 +26,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.materialswitch.MaterialSwitch;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -48,6 +51,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         prefs = getSharedPreferences(RuleStore.PREFS_NAME, MODE_PRIVATE);
         settingsPrefs = getSharedPreferences(PREFS_SETTINGS_NAME, MODE_PRIVATE);
+
+        // Set up listener for rules saved
+        RuleStore.setOnRulesSavedListener(context -> copyJsonToAppDataDirectories());
+
+        // Check for root access
+        if (!checkRootAccess()) {
+            new MaterialAlertDialogBuilder(this)
+                    .setTitle(R.string.root_required)
+                    .setMessage(R.string.root_required_message)
+                    .setPositiveButton(R.string.ok, null)
+                    .setCancelable(false)
+                    .show();
+        }
 
         // Set status bar based on system theme
         setStatusBarBasedOnTheme();
@@ -247,10 +263,64 @@ public class MainActivity extends AppCompatActivity {
                             .putBoolean(KEY_DISABLE_GLOBAL_RULES, switchDisableGlobalRules.isChecked())
                             .putBoolean(KEY_DISABLE_ALL_RULES, switchDisableAllRules.isChecked())
                             .apply();
-                    // Trigger JSON file update
+
+                    // Trigger JSON file update (will read settings from SharedPreferences)
                     RuleStore.saveRulesToFile(this);
                 })
                 .setNegativeButton(R.string.cancel, null)
                 .show();
+    }
+
+    private boolean checkRootAccess() {
+        try {
+            Process process = Runtime.getRuntime().exec("su");
+            DataOutputStream os = new DataOutputStream(process.getOutputStream());
+            os.writeBytes("exit\n");
+            os.flush();
+            int exitValue = process.waitFor();
+            return exitValue == 0;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    private void copyJsonToAppDataDirectories() {
+        new Thread(() -> {
+            try {
+                // Source file path
+                String sourcePath = getExternalFilesDir(null) + "/camtags_rules.json";
+                
+                // Get all configured packages (excluding "global")
+                Map<String, ?> all = prefs.getAll();
+                for (String packageName : all.keySet()) {
+                    if (packageName.equals("global")) continue;
+                    
+                    // Target path in app's data directory
+                    String targetPath = "/data/data/" + packageName + "/files/camtags_rules.json";
+                    
+                    // Copy using root
+                    String command = "cp " + sourcePath + " " + targetPath + "\n" +
+                                   "chmod 644 " + targetPath + "\n" +
+                                   "chown " + packageName + ":" + packageName + " " + targetPath + "\n";
+                    
+                    runRootCommand(command);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
+
+    private void runRootCommand(String command) {
+        try {
+            Process process = Runtime.getRuntime().exec("su");
+            DataOutputStream os = new DataOutputStream(process.getOutputStream());
+            os.writeBytes(command);
+            os.writeBytes("exit\n");
+            os.flush();
+            process.waitFor();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

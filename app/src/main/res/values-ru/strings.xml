@@ -44,4 +44,8 @@
     <string name="applic_name">Имя приложения</string>
     <string name="package_name">Имя пакета</string>
     <string name="rules_enabled">Правила: %d включено</string>
+
+    <!-- Root Permission -->
+    <string name="root_required">Требуется Root</string>
+    <string name="root_required_message">Это приложение требует root-доступ для копирования файлов конфигурации в приложения камеры. Без root модуль не будет работать правильно.</string>
 </resources>
