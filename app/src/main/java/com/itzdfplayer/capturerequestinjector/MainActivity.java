@@ -235,7 +235,7 @@ public class MainActivity extends AppCompatActivity {
         MaterialSwitch switchDisableAllRules = dialogView.findViewById(R.id.switchDisableAllRules);
         
         // Load current settings
-        SharedPreferences settingsPrefs = XposedModule.getRemotePreferences(RuleStore.SETTINGS_PREFS_NAME);
+        SharedPreferences settingsPrefs = getSharedPreferences(RuleStore.SETTINGS_PREFS_NAME, MODE_PRIVATE);
         switchDisableGlobalRules.setChecked(settingsPrefs.getBoolean(KEY_DISABLE_GLOBAL_RULES, false));
         switchDisableAllRules.setChecked(settingsPrefs.getBoolean(KEY_DISABLE_ALL_RULES, false));
         
@@ -243,7 +243,7 @@ public class MainActivity extends AppCompatActivity {
                 .setTitle(R.string.settings)
                 .setView(dialogView)
                 .setPositiveButton(R.string.save, (dialog, which) -> {
-                    // Save settings using RemotePreferences
+                    // Save settings
                     settingsPrefs.edit()
                             .putBoolean(KEY_DISABLE_GLOBAL_RULES, switchDisableGlobalRules.isChecked())
                             .putBoolean(KEY_DISABLE_ALL_RULES, switchDisableAllRules.isChecked())
