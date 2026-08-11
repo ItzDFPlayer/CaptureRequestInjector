@@ -15,6 +15,8 @@ An Xposed/LSPosed module that allows you to override camera capture request para
    - Install the APK on your device
    - Open LSPosed Manager
    - Enable the module for your target camera apps
+   - Give Root access in KSU/Magisk
+   - Reboot
 
 2. **Configure Rules**
    - Open the Capture Request Injector app
