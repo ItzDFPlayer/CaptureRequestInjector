@@ -28,6 +28,7 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.File;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -208,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
         AppListAdapter adapter = new AppListAdapter(this, pm, packageName -> {
             RuleStore.saveRules(this, packageName, new ArrayList<>());
             loadPackageList();
+            copyJsonToAppDataDirectories();
             dialog.dismiss();
         });
         
@@ -288,39 +290,88 @@ public class MainActivity extends AppCompatActivity {
         new Thread(() -> {
             try {
                 // Source file path
-                String sourcePath = getExternalFilesDir(null) + "/camtags_rules.json";
-                
+                File sourceFile = RuleStore.getRulesFile(this);
+                String sourcePath = sourceFile.getAbsolutePath();
+
+                logToFile("Source file path: " + sourcePath);
+                logToFile("Source file exists: " + sourceFile.exists());
+
+                if (!sourceFile.exists()) {
+                    logToFile("ERROR: Source file does not exist, cannot copy");
+                    return;
+                }
+
                 // Get all configured packages (excluding "global")
                 Map<String, ?> all = prefs.getAll();
                 for (String packageName : all.keySet()) {
                     if (packageName.equals("global")) continue;
-                    
-                    // Target path in app's data directory
-                    String targetPath = "/data/data/" + packageName + "/files/camtags_rules.json";
-                    
-                    // Copy using root
-                    String command = "cp " + sourcePath + " " + targetPath + "\n" +
-                                   "chmod 644 " + targetPath + "\n" +
-                                   "chown " + packageName + ":" + packageName + " " + targetPath + "\n";
-                    
-                    runRootCommand(command);
+
+                    // Target path in app's Android/data directory
+                    String targetDir = "/storage/emulated/0/Android/data/" + packageName + "/files";
+                    String targetPath = targetDir + "/camtags_rules.json";
+
+                    // Create target directory and copy file using root
+                    String command = "mkdir -p " + targetDir + "\n" +
+                                   "cp " + sourcePath + " " + targetPath + "\n" +
+                                   "ls -la " + targetPath + "\n";
+
+                    logToFile("Copying to: " + targetPath);
+                    logToFile("Command: " + command);
+                    boolean success = runRootCommand(command);
+                    logToFile("Command execution result: " + success);
                 }
+                logToFile("Copy operation completed");
             } catch (Exception e) {
+                logToFile("ERROR: Error copying files: " + e);
                 e.printStackTrace();
             }
         }).start();
     }
 
-    private void runRootCommand(String command) {
+    private void logToFile(String message) {
+        try {
+            File logFile = new File(getExternalFilesDir(null), "camtags_debug.log");
+            java.io.FileWriter writer = new java.io.FileWriter(logFile, true);
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss", java.util.Locale.US);
+            String timestamp = sdf.format(new java.util.Date());
+            writer.write(timestamp + " - " + message + "\n");
+            writer.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean runRootCommand(String command) {
         try {
             Process process = Runtime.getRuntime().exec("su");
             DataOutputStream os = new DataOutputStream(process.getOutputStream());
             os.writeBytes(command);
             os.writeBytes("exit\n");
             os.flush();
-            process.waitFor();
+
+            // Read output
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            BufferedReader errorReader = new BufferedReader(new InputStreamReader(process.getErrorStream()));
+            StringBuilder output = new StringBuilder();
+            StringBuilder error = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                output.append(line).append("\n");
+            }
+            while ((line = errorReader.readLine()) != null) {
+                error.append(line).append("\n");
+            }
+
+            int exitCode = process.waitFor();
+            logToFile("Command exit code: " + exitCode);
+            if (output.length() > 0) logToFile("Command output: " + output);
+            if (error.length() > 0) logToFile("Command error: " + error);
+
+            return exitCode == 0;
         } catch (Exception e) {
+            logToFile("ERROR executing command: " + e);
             e.printStackTrace();
+            return false;
         }
     }
 }

@@ -129,8 +129,8 @@ public class CaptureRequestOverrideHook extends XposedModule {
 
     private JSONObject loadRulesFromFile(String targetPackage) {
         try {
-            // Read from the app's data directory (copied via root)
-            File rulesFile = new File("/data/data/" + targetPackage + "/files/camtags_rules.json");
+            // Read from the app's Android/data directory (copied via root)
+            File rulesFile = new File("/storage/emulated/0/Android/data/" + targetPackage + "/files/camtags_rules.json");
 
             log(Log.DEBUG, TAG, "Rules file path: " + rulesFile.getAbsolutePath());
             log(Log.DEBUG, TAG, "Rules file exists: " + rulesFile.exists());
