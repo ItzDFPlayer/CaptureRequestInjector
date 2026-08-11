@@ -9,8 +9,8 @@ android {
     defaultConfig {
         applicationId = "com.itzdfplayer.capturerequestinjector"
         minSdk = 29
-        versionCode = 110
-        versionName = "1.1.0"
+        versionCode = 112
+        versionName = "1.1.2"
     }
 
     lint {
